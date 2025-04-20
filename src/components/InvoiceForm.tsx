@@ -313,7 +313,7 @@ export function InvoiceForm({ onUpdateInvoice }: InvoiceFormProps) {
         </div>
         <div className="flex justify-between items-center">
           <h4 className="font-medium">Total</h4>
-          <span>{invoice.total.toFixed(2)}</span>
+          <span>{invoice.total?.toFixed(2)}</span>
         </div>
       </div>
     </Card>
