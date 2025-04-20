@@ -32,7 +32,7 @@ export interface InvoiceData {
   latePaymentInfo: string;
   currency: string; // Currency type
   discount?: number; // Optional discount percentage
-  status: 'Pending' | 'Paid' | 'Overdue'; // Invoice status
+  status: 'Pending' | 'Paid' | 'Overdue' | 'draft'; // Invoice status
   paymentMethod?: string; // Payment method (e.g., 'Credit Card')
   transactionId?: string; // Transaction ID
   shippingAddress?: string; // Optional shipping address

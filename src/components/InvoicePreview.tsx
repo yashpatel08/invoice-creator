@@ -9,16 +9,9 @@ import { useState } from "react";
 
 interface InvoicePreviewProps {
   invoice: InvoiceData;
-  companyDetails: {
-    name: string;
-    address: string;
-    email: string;
-    phone: string;
-    website: string;
-  };
 }
 
-export function InvoicePreview({ invoice, companyDetails }: InvoicePreviewProps) {
+export function InvoicePreview({ invoice }: InvoicePreviewProps) {
   const [taxPercentage, setTaxPercentage] = useState<number>(0);
   
   const totalBeforeTax = invoice.items.reduce(

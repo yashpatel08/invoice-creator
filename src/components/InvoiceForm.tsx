@@ -21,11 +21,11 @@ export function InvoiceForm({ onUpdateInvoice }: InvoiceFormProps) {
       name: "",
       address: "",
       telephone: "",
-      email: "", // Added email
-      phone: "", // Added phone
-      website: "", // Added website
+      email: "",
+      phone: "",
+      website: "",
       taxRegistrationNo: "",
-      taxLabel: "GST No", // default editable label
+      taxLabel: "GST No",
     },
     billTo: {
       name: "",
@@ -36,8 +36,12 @@ export function InvoiceForm({ onUpdateInvoice }: InvoiceFormProps) {
     bankAccount: "",
     paymentTerms: "",
     latePaymentInfo: "",
-    taxPercentage: 0, 
-    total: 0,  
+    taxPercentage: 0,
+    total: 0,
+    currency: "USD", // must match your InvoiceData type
+    status: "draft", 
+    createdAt: new Date().toISOString(),
+    updatedAt: new Date().toISOString(),
   });
 
   const addItem = () => {
