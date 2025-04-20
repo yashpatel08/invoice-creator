@@ -12,7 +12,6 @@ interface InvoicePreviewProps {
 }
 
 export function InvoicePreview({ invoice }: InvoicePreviewProps) {
-  const [taxPercentage, setTaxPercentage] = useState<number>(0);
   
   const totalBeforeTax = invoice.items.reduce(
     (sum, item) => sum + item.price * item.quantity,
