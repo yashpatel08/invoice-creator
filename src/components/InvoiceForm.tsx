@@ -26,6 +26,7 @@ export function InvoiceForm({ onUpdateInvoice }: InvoiceFormProps) {
       website: "",
       taxRegistrationNo: "",
       taxLabel: "GST No",
+      companyRegistrationNo: "",
     },
     billTo: {
       name: "",

@@ -14,8 +14,25 @@ const Index = () => {
       address: "",
       email: "",
     },
+    company: {
+      name: "",
+      address: "",
+      telephone: "",
+      email: "",  
+      phone: "",
+      website: "",
+      taxRegistrationNo: "",
+      taxLabel: "",
+      companyRegistrationNo: "",
+    },
     items: [],
+    taxPercentage: 0,
+    bankAccount: "", 
+    paymentTerms: "", 
+    latePaymentInfo: "", 
+    currency: "",
   });
+  
 
   return (
     <div className="min-h-screen bg-gray-50 py-8">

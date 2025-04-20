@@ -5,7 +5,6 @@ import { Receipt, Download } from "lucide-react";
 import jsPDF from "jspdf";
 import autoTable from "jspdf-autotable";
 import { toast } from "sonner";
-import { useState } from "react";
 
 interface InvoicePreviewProps {
   invoice: InvoiceData;
