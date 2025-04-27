@@ -1,4 +1,3 @@
-
 import { Input } from "../components/ui/input";
 import { Button } from "../components/ui/button";
 import { X } from "lucide-react";
@@ -11,6 +10,14 @@ interface InvoiceItemProps {
 }
 
 export function InvoiceItem({ item, onChange, onDelete }: InvoiceItemProps) {
+  const handlePriceChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    // This will properly convert the string to a number, 
+    // removing any leading zeros
+    const value = e.target.value;
+    const price = value === '' ? 0 : parseFloat(value);
+    onChange({ ...item, price });
+  };
+  
   return (
     <div className="flex items-center gap-4 mb-2">
       <Input
@@ -29,8 +36,8 @@ export function InvoiceItem({ item, onChange, onDelete }: InvoiceItemProps) {
       <Input
         type="number"
         placeholder="Price"
-        value={item.price}
-        onChange={(e) => onChange({ ...item, price: Number(e.target.value) })}
+        value={item.price === 0 ? '' : item.price} // Show empty string instead of 0
+        onChange={handlePriceChange}
         className="w-32"
       />
       <div className="w-32 text-right">
