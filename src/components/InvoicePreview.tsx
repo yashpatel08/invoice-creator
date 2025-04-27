@@ -210,9 +210,7 @@ export function InvoicePreview({ invoice }: InvoicePreviewProps) {
         }
       },
       // Ensure there's at least 30mm space at the bottom of each page for the table
-      startY: Math.min(tableStartY, pageHeight - margin - 30),
-      // Allow cells to take multiple lines
-      minCellHeight: 5,
+      // Note: Removed duplicate startY here
       // Make sure description text wraps properly
       didParseCell: function(data) {
         if (data.column.index === 0 && data.cell.text.length > 0) {
@@ -225,8 +223,9 @@ export function InvoicePreview({ invoice }: InvoicePreviewProps) {
 
     // Get final position after table
     const finalY = (doc as any).lastAutoTable.finalY;
-    // Get the number of pages
-    const totalPages = doc.internal.getNumberOfPages();
+    // Get the number of pages - fixed to use the internal property correctly
+    const totalPages = (doc.internal as any).getNumberOfPages?.() || 
+                        doc.internal.pages.length - 1; // Fallback
     
     // Go to the last page to add totals
     doc.setPage(totalPages);
@@ -268,7 +267,8 @@ export function InvoicePreview({ invoice }: InvoicePreviewProps) {
     doc.text(`Total: $${totalAfterTax.toFixed(2)}`, pageWidth - contentMargin, totalsStartY + 20, { align: "right" });
   
     // Update total pages count after potentially adding a page for totals
-    const finalTotalPages = doc.internal.getNumberOfPages();
+    const finalTotalPages = (doc.internal as any).getNumberOfPages?.() || 
+                            doc.internal.pages.length - 1; // Fallback
     
     // Add page numbers to all pages
     for (let i = 1; i <= finalTotalPages; i++) {
